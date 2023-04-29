@@ -20,16 +20,19 @@ public class CustomerTest {
         customerList.add(customer5);
 
 
-        for(Customer customer : customerList){
-            System.out.println(customer.showCustomerInfo());
-        }
-        int price = 10000;
-        for(Customer customer:customerList){
-            int cost = customer.calcPrice(price);
-            System.out.println(customer.getCustomerName()+"님이 "+cost+ "원 지불하셨습니다.");
-            System.out.println(customer.getCustomerName()+"님의 보너스포인트는" +customer.bonusPoint+"원 입니다");
-        }
-
+//        for(Customer customer : customerList){
+//            System.out.println(customer.showCustomerInfo());
+//        }
+//        int price = 10000;
+//        for(Customer customer:customerList){
+//            int cost = customer.calcPrice(price);
+//            System.out.println(customer.getCustomerName()+"님이 "+cost+ "원 지불하셨습니다.");
+//            System.out.println(customer.getCustomerName()+"님의 보너스포인트는" +customer.bonusPoint+"원 입니다");
+//        }
+    if(customer3 instanceof  GoldCustomer){
+        GoldCustomer vc = (GoldCustomer)customer3;
+        System.out.println(customer3.showCustomerInfo());
+    }
     }
 
 }
