@@ -10,13 +10,10 @@ public class CustomerTest {
 
         System.out.println(customerLee.showCustomerInfo() + price);
 
-
         VIPCustomer customerKim = new VIPCustomer(10020, "김유신");
         customerKim.bonusPoint = 10000;
         price = customerKim.calcPrice(1000);
         System.out.println(customerKim.showCustomerInfo() + price);
-
-
         Customer vc = new VIPCustomer(12345, "noname");
         price = vc.calcPrice(1000);
         System.out.println(price);
