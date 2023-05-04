@@ -14,6 +14,6 @@ public class ClassTest {
         Person p = (Person)c2.newInstance();
         System.out.println(p);
 
-        
+
     }
 }
