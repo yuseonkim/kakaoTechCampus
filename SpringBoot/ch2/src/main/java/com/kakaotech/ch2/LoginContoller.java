@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -20,7 +22,7 @@ public class LoginContoller {
 
     //@RequestMapping(value = "/login/login", method = RequestMethod.POST)
     @PostMapping("/login")
-    public String login(String id, String pwd, Model model) throws UnsupportedEncodingException {
+    public String login(HttpServletRequest req,String id, String pwd, RedirectAttributes model) throws UnsupportedEncodingException {
 
         //1. id pw 확인
         if (loginCheck(id, pwd)) {
@@ -28,8 +30,13 @@ public class LoginContoller {
             model.addAttribute("pwd",pwd);
             return "userInfo";
         } else {
-            String msg = URLEncoder.encode( "잘못입력했어요","utf-8");
-            return "redirect:/login/login?msg="+msg; //GET- URL ReWriting
+            //String msg = URLEncoder.encode( "잘못입력했어요;","utf-8");
+            String msg = "잘못입력일";
+            model.addAttribute("msg",msg);
+            //model.addFlashAttribute("msg","일회용메세지;");
+//            req.setAttribute("msg","request에 저잘된 메세지");
+            //return "redirect:/login/login?msg="+msg; //GET- URL ReWriting
+            return "redirect:/"; //GET- URL ReWriting
         }
     }
 

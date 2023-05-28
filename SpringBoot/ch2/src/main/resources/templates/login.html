@@ -6,8 +6,10 @@
 </head>
 <body>
 <h1 th:text="${param.msg}"></h1>
-    <h1 th:text="${id}"></h1>
-  <form action="/login/login" method="post">
+<h1 th:text="${msg}"></h1>
+<h1 th:text="${#request.getAttribute('msg')}"></h1>
+<!--  //<form action="/login/login" method="post">-->
+<form action="/login/login" method="post">
     id : <br>
     <input type="text" name="id">
     pwd : <br>

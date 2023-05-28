@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //1.원격프로그램 등록
 //2.URL과 메서드를 연결
-@RestController
+@Controller
 public class HelloController { //원격프로그램
     @RequestMapping("/hello") //url 입력시 메소드 호출
     public String main(){
