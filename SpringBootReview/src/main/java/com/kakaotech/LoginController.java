@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -18,18 +20,27 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(String id, String pwd, Model model) throws UnsupportedEncodingException {
+    public String login(String id, String pwd, boolean check, Model model,
+                        HttpServletResponse resp) throws UnsupportedEncodingException {
+        System.out.println(check);
         if(LoginCheck(id,pwd)){
-            model.addAttribute("id",id);
-            model.addAttribute("pwd",pwd);
-            return "userInfo";
+           if(check){
+               Cookie cookie = new Cookie("id",id);
+               cookie.setMaxAge(60*24*24);
+               resp.addCookie(cookie);
+           }else{
+               Cookie cookie = new Cookie("id",id);
+               cookie.setMaxAge(0);
+               resp.addCookie(cookie);
+           }
+            return "index";
         }
-        String msg ="잘못된 비밀번호 혹은 아이디";
-        return URLEncoder.encode( "redirect:/login?msg"+msg,"utf-8");
+        String msg =URLEncoder.encode("잘못된 비밀번호 혹은 아이디","utf-8");
+        return "redirect:/login?msg="+msg;
     }
 
     private boolean LoginCheck(String id, String pwd) {
-        if(id.equals("abcd")&&pwd.equals("1234")){
+        if (id.equals("abcd") && pwd.equals("1234")) {
             return true;
         }
         return false;

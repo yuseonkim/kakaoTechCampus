@@ -5,7 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-  <h1 th:text="|id = ${id}|"></h1>
-  <h1 th:text="|pwd = ${pwd}|"></h1>
+  <h1 th:text="|id = ${user.id}|"></h1>
+  <h1 th:text="|pwd = ${user.pwd}|"></h1>
+  <h1 th:text="|name = ${user.name}|"></h1>
+  <h1 th:text="|email = ${user.email}|"></h1>
 </body>
 </html>

@@ -7,8 +7,9 @@
 <body>
 <h1 th:text="${param.msg}"></h1>
 <form method="post" action="/login/login">
-    <input type="text" name="id">아이디<br>
+    <input  type="text" name="id">아이디<br>
     <input type="text" name="pwd">비밀번호<br>
+    <input type="checkbox" name="check">아이디기억<br>
     <input type="submit" value="전송">
 </form>
 
